@@ -4,6 +4,105 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ---- BYK Bricks brand system ---- */
+@theme {
+  --color-surface: #fcf9f8;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f6f3f2;
+  --color-surface-container: #f0eded;
+  --color-surface-container-high: #eae7e7;
+  --color-surface-container-highest: #e5e2e1;
+  --color-surface-variant: #e5e2e1;
+  --color-surface-tint: #00658d;
+  --color-on-surface: #1c1b1b;
+  --color-on-surface-variant: #3e4850;
+  --color-brand-primary: #00658d;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #00aeef;
+  --color-on-primary-container: #003e58;
+  --color-primary-fixed-dim: #82cfff;
+  --color-brand-secondary: #7b41b3;
+  --color-on-secondary: #ffffff;
+  --color-outline: #6e7881;
+  --color-outline-variant: #bdc8d1;
+
+  --font-headline: "Montserrat", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  --text-headline-xl: 48px;
+  --text-headline-xl--line-height: 56px;
+  --text-headline-xl--letter-spacing: -0.02em;
+  --text-headline-xl--font-weight: 700;
+  --text-headline-lg: 32px;
+  --text-headline-lg--line-height: 40px;
+  --text-headline-lg--letter-spacing: -0.01em;
+  --text-headline-lg--font-weight: 700;
+  --text-headline-md: 24px;
+  --text-headline-md--line-height: 32px;
+  --text-headline-md--font-weight: 600;
+  --text-body-lg: 18px;
+  --text-body-lg--line-height: 28px;
+  --text-body-md: 16px;
+  --text-body-md--line-height: 24px;
+  --text-label-bold: 14px;
+  --text-label-bold--line-height: 20px;
+  --text-label-bold--letter-spacing: 0.05em;
+  --text-label-bold--font-weight: 600;
+  --text-label-sm: 12px;
+  --text-label-sm--line-height: 16px;
+  --text-label-sm--font-weight: 500;
+
+  --spacing-margin-mobile: 20px;
+  --spacing-margin-desktop: 64px;
+  --spacing-gutter: 24px;
+  --spacing-container-max: 1280px;
+}
+
+.material-symbols-outlined {
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+}
+
+@utility reveal {
+  opacity: 0;
+  transform: translateY(2rem);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  &.is-revealed {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility reveal-left {
+  opacity: 0;
+  transform: translateX(-2rem);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  &.is-revealed {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility reveal-right {
+  opacity: 0;
+  transform: translateX(2rem);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  &.is-revealed {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /*
  * Design system definition.
  *
