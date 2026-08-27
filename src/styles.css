@@ -74,6 +74,10 @@
   -webkit-font-smoothing: antialiased;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 @utility reveal {
   opacity: 0;
   transform: translateY(2rem);
