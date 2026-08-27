@@ -366,7 +366,7 @@ function Index() {
                     <label className="mb-2 block font-body text-label-bold text-on-surface-variant">
                       Rate Your Experience
                     </label>
-                    <div className="flex gap-1 text-brand-primary">
+                    <div className="flex gap-1 text-star-gold">
                       {[1, 2, 3, 4, 5].map((n) => (
                         <button
                           key={n}
