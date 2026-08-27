@@ -439,7 +439,10 @@ function Index() {
         </section>
 
         {/* LOGISTICS */}
-        <section className="relative w-full overflow-hidden bg-brand-primary py-32">
+        <section
+          id="logistics"
+          className="relative w-full overflow-hidden bg-brand-primary py-32"
+        >
           <svg
             className="absolute inset-0 h-full w-full text-primary-fixed-dim/20"
             preserveAspectRatio="none"
