@@ -375,7 +375,7 @@ function Index() {
                           onClick={() => setRating(n)}
                           className={n <= rating ? "opacity-100" : "opacity-40"}
                         >
-                          <Icon name="star" />
+                          <Icon name="star" filled />
                         </button>
                       ))}
                     </div>
