@@ -60,7 +60,13 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const NAV = ["Home", "Our Products", "Logistics", "About Us", "Contact"];
+const NAV = [
+  { label: "Home", href: "#home" },
+  { label: "Our Products", href: "#products" },
+  { label: "Logistics", href: "#logistics" },
+  { label: "About Us", href: "#about" },
+  { label: "Contact", href: "#contact" },
+];
 
 const PRODUCTS = [
   {
@@ -115,17 +121,17 @@ function Index() {
         <div className="mx-auto flex h-24 w-full max-w-container-max items-center justify-between px-margin-mobile lg:px-margin-desktop">
           <img alt="BYK Bricks Logo" className="h-20 w-auto object-contain" src={IMG.logo} />
           <nav className="hidden items-center gap-gutter lg:flex">
-            {NAV.map((item, i) => (
+            {NAV.map((item) => (
               <a
-                key={item}
-                href="#"
+                key={item.label}
+                href={item.href}
                 className={
-                  i === 0
+                  item.href === "#home"
                     ? "font-body text-label-bold font-semibold text-brand-primary transition-colors"
                     : "font-body text-label-bold text-on-surface-variant transition-colors hover:text-brand-primary"
                 }
               >
-                {item}
+                {item.label}
               </a>
             ))}
           </nav>
@@ -148,7 +154,10 @@ function Index() {
 
       <main className="w-full bg-surface pt-20">
         {/* HERO */}
-        <section className="relative z-0 flex w-full flex-col items-center gap-12 px-margin-mobile py-32 pt-40 lg:flex-row lg:gap-gutter lg:px-margin-desktop lg:pb-48">
+        <section
+          id="home"
+          className="relative z-0 flex w-full flex-col items-center gap-12 px-margin-mobile py-32 pt-40 lg:flex-row lg:gap-gutter lg:px-margin-desktop lg:pb-48"
+        >
           <div className="absolute inset-0 z-0 overflow-hidden rounded-bl-[120px]">
             <div className="absolute inset-0 bg-surface-container-low" />
             <img
@@ -224,11 +233,14 @@ function Index() {
         </section>
 
         {/* ABOUT */}
-        <section className="w-full bg-surface-container-lowest px-margin-mobile py-32 lg:px-margin-desktop">
+        <section
+          id="about"
+          className="w-full bg-surface-container-lowest px-margin-mobile py-32 lg:px-margin-desktop"
+        >
           <div className="mx-auto max-w-container-max">
             <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
               <Reveal direction="left" className="relative">
-                <div className="relative z-10 aspect-square w-full overflow-hidden rounded-full border-8 border-surface-container-lowest shadow-xl">
+                <div className="relative z-10 aspect-square w-full overflow-hidden rounded-2xl border-8 border-surface-container-lowest shadow-xl">
                   <img
                     alt="Modern brick manufacturing facility in Haveri"
                     className="h-full w-full object-cover"
@@ -354,7 +366,7 @@ function Index() {
                     <label className="mb-2 block font-body text-label-bold text-on-surface-variant">
                       Rate Your Experience
                     </label>
-                    <div className="flex gap-1 text-brand-primary">
+                    <div className="flex gap-1 text-star-gold">
                       {[1, 2, 3, 4, 5].map((n) => (
                         <button
                           key={n}
@@ -407,7 +419,7 @@ function Index() {
                       className="rounded-xl border border-outline-variant bg-surface p-6 shadow-sm"
                     >
                       <div className="mb-3 flex items-center justify-between">
-                        <div className="flex text-brand-primary">
+                        <div className="flex text-star-gold">
                           {[1, 2, 3, 4, 5].map((n) => (
                             <Icon key={n} name="star" className="text-[18px]" />
                           ))}
@@ -427,7 +439,10 @@ function Index() {
         </section>
 
         {/* LOGISTICS */}
-        <section className="relative w-full overflow-hidden bg-brand-primary py-32">
+        <section
+          id="logistics"
+          className="relative w-full overflow-hidden bg-brand-primary py-32"
+        >
           <svg
             className="absolute inset-0 h-full w-full text-primary-fixed-dim/20"
             preserveAspectRatio="none"

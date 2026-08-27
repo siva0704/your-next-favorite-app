@@ -25,6 +25,7 @@
   --color-on-secondary: #ffffff;
   --color-outline: #6e7881;
   --color-outline-variant: #bdc8d1;
+  --color-star-gold: #f5b90b;
 
   --font-headline: "Montserrat", sans-serif;
   --font-body: "Inter", sans-serif;
@@ -71,6 +72,10 @@
   direction: ltr;
   -webkit-font-feature-settings: "liga";
   -webkit-font-smoothing: antialiased;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 @utility reveal {
