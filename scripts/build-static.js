@@ -19,6 +19,8 @@ async function main() {
   html = html.replaceAll('src="/assets/', 'src="./assets/');
   html = html.replaceAll('content="/assets/', 'content="./assets/');
   html = html.replaceAll('href="/favicon.ico"', 'href="./favicon.ico"');
+  html = html.replaceAll('"/assets/', '"./assets/');
+  html = html.replaceAll("'/assets/", "'./assets/");
 
   const outputPublicDir = path.resolve(".output/public");
   if (!fs.existsSync(outputPublicDir)) {
