@@ -366,16 +366,16 @@ function Index() {
                     <label className="mb-2 block font-body text-label-bold text-on-surface-variant">
                       Rate Your Experience
                     </label>
-                    <div className="flex gap-1 text-star-gold">
+                    <div className="flex gap-1 text-[28px] text-star-gold">
                       {[1, 2, 3, 4, 5].map((n) => (
                         <button
                           key={n}
                           type="button"
                           aria-label={`Rate ${n} star${n > 1 ? "s" : ""}`}
                           onClick={() => setRating(n)}
-                          className={n <= rating ? "opacity-100" : "opacity-40"}
+                          className="cursor-pointer transition-transform hover:scale-110"
                         >
-                          <Icon name="star" filled />
+                          <Icon name="star" filled={n <= rating} />
                         </button>
                       ))}
                     </div>

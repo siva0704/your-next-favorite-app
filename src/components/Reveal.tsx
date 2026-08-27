@@ -50,7 +50,7 @@ export function Icon({ name, className = "", filled = false }: { name: string; c
   return (
     <span
       className={`material-symbols-outlined ${className}`}
-      style={filled ? { fontVariationSettings: "'FILL' 1" } : undefined}
+      style={{ fontVariationSettings: filled ? "'FILL' 1" : "'FILL' 0" }}
     >
       {name}
     </span>
