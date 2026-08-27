@@ -421,7 +421,7 @@ function Index() {
                       <div className="mb-3 flex items-center justify-between">
                         <div className="flex text-star-gold">
                           {[1, 2, 3, 4, 5].map((n) => (
-                            <Icon key={n} name="star" className="text-[18px]" />
+                            <Icon key={n} name="star" className="text-[18px]" filled />
                           ))}
                         </div>
                         <span className="font-body text-label-sm text-on-surface-variant">
