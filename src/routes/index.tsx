@@ -233,7 +233,10 @@ function Index() {
         </section>
 
         {/* ABOUT */}
-        <section className="w-full bg-surface-container-lowest px-margin-mobile py-32 lg:px-margin-desktop">
+        <section
+          id="about"
+          className="w-full bg-surface-container-lowest px-margin-mobile py-32 lg:px-margin-desktop"
+        >
           <div className="mx-auto max-w-container-max">
             <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
               <Reveal direction="left" className="relative">
