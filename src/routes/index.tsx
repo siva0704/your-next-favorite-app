@@ -121,17 +121,17 @@ function Index() {
         <div className="mx-auto flex h-24 w-full max-w-container-max items-center justify-between px-margin-mobile lg:px-margin-desktop">
           <img alt="BYK Bricks Logo" className="h-20 w-auto object-contain" src={IMG.logo} />
           <nav className="hidden items-center gap-gutter lg:flex">
-            {NAV.map((item, i) => (
+            {NAV.map((item) => (
               <a
-                key={item}
-                href="#"
+                key={item.label}
+                href={item.href}
                 className={
-                  i === 0
+                  item.href === "#home"
                     ? "font-body text-label-bold font-semibold text-brand-primary transition-colors"
                     : "font-body text-label-bold text-on-surface-variant transition-colors hover:text-brand-primary"
                 }
               >
-                {item}
+                {item.label}
               </a>
             ))}
           </nav>
