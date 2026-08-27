@@ -240,7 +240,7 @@ function Index() {
           <div className="mx-auto max-w-container-max">
             <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
               <Reveal direction="left" className="relative">
-                <div className="relative z-10 aspect-square w-full overflow-hidden rounded-full border-8 border-surface-container-lowest shadow-xl">
+                <div className="relative z-10 aspect-square w-full overflow-hidden rounded-2xl border-8 border-surface-container-lowest shadow-xl">
                   <img
                     alt="Modern brick manufacturing facility in Haveri"
                     className="h-full w-full object-cover"
