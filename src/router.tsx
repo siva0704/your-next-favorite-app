@@ -1,8 +1,13 @@
 import { QueryClient } from "@tanstack/react-query";
-import { createRouter } from "@tanstack/react-router";
+import { createRouter as createRouterInstance } from "@tanstack/react-router";
 import { routeTree } from "./routeTree.gen";
 
 const getBasePath = () => {
+  if (typeof window !== "undefined") {
+    if (window.location.pathname.startsWith("/your-next-favorite-app")) {
+      return "/your-next-favorite-app";
+    }
+  }
   const envBase = import.meta.env.BASE_URL;
   if (envBase && envBase !== "/") {
     return envBase.endsWith("/") ? envBase.slice(0, -1) : envBase;
@@ -10,10 +15,10 @@ const getBasePath = () => {
   return "/your-next-favorite-app";
 };
 
-export const getRouter = () => {
+export function createRouter() {
   const queryClient = new QueryClient();
 
-  const router = createRouter({
+  const router = createRouterInstance({
     routeTree,
     basepath: getBasePath(),
     context: { queryClient },
@@ -22,4 +27,6 @@ export const getRouter = () => {
   });
 
   return router;
-};
+}
+
+export const getRouter = createRouter;
