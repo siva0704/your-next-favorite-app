@@ -419,7 +419,7 @@ function Index() {
                       className="rounded-xl border border-outline-variant bg-surface p-6 shadow-sm"
                     >
                       <div className="mb-3 flex items-center justify-between">
-                        <div className="flex text-brand-primary">
+                        <div className="flex text-star-gold">
                           {[1, 2, 3, 4, 5].map((n) => (
                             <Icon key={n} name="star" className="text-[18px]" />
                           ))}
