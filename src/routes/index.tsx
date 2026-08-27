@@ -154,7 +154,10 @@ function Index() {
 
       <main className="w-full bg-surface pt-20">
         {/* HERO */}
-        <section className="relative z-0 flex w-full flex-col items-center gap-12 px-margin-mobile py-32 pt-40 lg:flex-row lg:gap-gutter lg:px-margin-desktop lg:pb-48">
+        <section
+          id="home"
+          className="relative z-0 flex w-full flex-col items-center gap-12 px-margin-mobile py-32 pt-40 lg:flex-row lg:gap-gutter lg:px-margin-desktop lg:pb-48"
+        >
           <div className="absolute inset-0 z-0 overflow-hidden rounded-bl-[120px]">
             <div className="absolute inset-0 bg-surface-container-low" />
             <img
