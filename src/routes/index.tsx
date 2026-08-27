@@ -367,17 +367,20 @@ function Index() {
                       Rate Your Experience
                     </label>
                     <div className="flex gap-1 text-[28px] text-star-gold">
-                      {[1, 2, 3, 4, 5].map((n) => (
-                        <button
-                          key={n}
-                          type="button"
-                          aria-label={`Rate ${n} star${n > 1 ? "s" : ""}`}
-                          onClick={() => setRating(n)}
-                          className="cursor-pointer transition-transform hover:scale-110"
-                        >
-                          <Icon name="star" filled={n <= rating} />
-                        </button>
-                      ))}
+                      {[1, 2, 3, 4, 5].map((n) => {
+                        const isFilled = n <= rating;
+                        return (
+                          <button
+                            key={n}
+                            type="button"
+                            aria-label={`Rate ${n} star${n > 1 ? "s" : ""}`}
+                            onClick={() => setRating(n)}
+                            className="cursor-pointer transition-transform hover:scale-110"
+                          >
+                            <Icon name={isFilled ? "star" : "star_border"} filled={isFilled} />
+                          </button>
+                        );
+                      })}
                     </div>
                   </div>
                   <div>
