@@ -1,12 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Reveal, Icon } from "@/components/Reveal";
+import { Reveal, Icon, StarIcon } from "@/components/Reveal";
+import heroImg from "@/assets/hero-byk.jpg";
+import appajiImg from "@/assets/appaji-byk.jpg";
 
 const IMG = {
   logo: "https://lh3.googleusercontent.com/aida-public/AB6AXuD5NN2I4Z_DhxCT5tuRsE6JEwBkH2noKGXjocnrttgKK2ApGuWTwJT2TqZntR4SGHmWeA-EjoPPiO6rtpRCKAIJPJ85PMZPj2FHBI-y_nfKH617kuL_7Htop4Uur922oxx91_gZjXNxfi-9M18t4Yo3S0kUXA7Fhf_m6zu1uPE9PZ6nHRwni7BXnpK4iZO6lM1UYoEqoanGC4sgSvwWSi0ExdxKLt6nxCq9vnIDJBi5ZUGItulidD8l9fiPCe1goC-ew20",
-  hero: "https://lh3.googleusercontent.com/aida/AEtjO1Uu1WiVBCSCjYo3vwlBBTXnrWS353wDKRQeyyWsktGtFcB32yBz5iL3v4qA4N9gUR1ZAU4HejKHKzKIa6tHboGkOTxgfTtHq55kCbdnVjqX3xy9MmmRezjTy2R9kqyuCARNcL9YqGiGS1XOxKCq6QBtT4bGExxxFOvLnp-wn6zL4FyOqf2-GkgtNlcuFyDhIBY9cY1RweX64bsu2WPVOwOITmp9VDpiQtN4zNsfTZKss87S0nPc8j8Yx1k4",
-  facility:
-    "https://lh3.googleusercontent.com/aida/AEtjO1WIAYyDsia0Aw9FBqhEUVFv-sbRMaSDJmnSMyOTWTiDFZurjlmpFyOK_pe4DXbccFn94d7nrs_9BIlU3Pa50ib1F7Kz3c8cxnXBtCMWN_MdKOOSMFwgOuWO9ybNu_tjq62DjxuLt-6COBIwpyjQutTuCC5Dona18M0_C3XVSGOCnktwHhwbsCD-8_e3EngjlDy3J1WHB8IeIc5HPV4PgUEyEKqYjezMj_t2y0X_9IIKVPk6M4t2OwhfuaDu",
+  hero: heroImg,
+  facility: appajiImg,
   brick:
     "https://lh3.googleusercontent.com/aida-public/AB6AXuBYNSTqruqH8NmtC9W8ejgY5ngio1fngTkzpbTdTmMeZU_KrfeWcMcGk3puTGOwKGiIj8VlKDEdHZOVKYWM6p8BYZQefrxS5h-GZ0O_WrM7Xe0nun9c5xBscQEZdBhWEfd_tUV9ZUs4je6ABBq1Znonlx0h8-tvQQGq4kEvKAPyNzmZKOmeM5ZJnmvbl_e-yATlRRoO25tdR4RCj5C7wiSCzG6QBm7sN-dGwVvvRgPb8XHwrSPRyftk2Q",
   sand: "https://lh3.googleusercontent.com/aida-public/AB6AXuAyYgnUgnKxlNmdIzsExqVVSU8ZHg-jJbZBfJG2IfGIev6mE5t1kxr-BVog4Rb_jFoebz7YenNXztx2rNChiBV0a55VLosonStkp5H3QVdHZfphpfVs08oSXI9hHn9DymiSvHjhaVg672uvGhFshYjdZ_5b1pothOyL1U_hVCTtvyNG38WPJrNPNFlrKx9XCi2FbD5CbGP8-NHETlyR3oELrVqvuxpcCqwrMj9pqKD5t2Q4RcB_Ndkrvg",
@@ -366,7 +367,7 @@ function Index() {
                     <label className="mb-2 block font-body text-label-bold text-on-surface-variant">
                       Rate Your Experience
                     </label>
-                    <div className="flex gap-1 text-[28px] text-star-gold">
+                    <div className="flex gap-2">
                       {[1, 2, 3, 4, 5].map((n) => {
                         const isFilled = n <= rating;
                         return (
@@ -377,7 +378,7 @@ function Index() {
                             onClick={() => setRating(n)}
                             className="cursor-pointer transition-transform hover:scale-110"
                           >
-                            <Icon name={isFilled ? "star" : "star_border"} filled={isFilled} />
+                            <StarIcon filled={isFilled} size={36} />
                           </button>
                         );
                       })}
@@ -422,9 +423,9 @@ function Index() {
                       className="rounded-xl border border-outline-variant bg-surface p-6 shadow-sm"
                     >
                       <div className="mb-3 flex items-center justify-between">
-                        <div className="flex text-star-gold">
+                        <div className="flex gap-1">
                           {[1, 2, 3, 4, 5].map((n) => (
-                            <Icon key={n} name="star" className="text-[18px]" filled />
+                            <StarIcon key={n} filled size={20} />
                           ))}
                         </div>
                         <span className="font-body text-label-sm text-on-surface-variant">
