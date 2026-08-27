@@ -60,7 +60,13 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const NAV = ["Home", "Our Products", "Logistics", "About Us", "Contact"];
+const NAV = [
+  { label: "Home", href: "#home" },
+  { label: "Our Products", href: "#products" },
+  { label: "Logistics", href: "#logistics" },
+  { label: "About Us", href: "#about" },
+  { label: "Contact", href: "#contact" },
+];
 
 const PRODUCTS = [
   {
