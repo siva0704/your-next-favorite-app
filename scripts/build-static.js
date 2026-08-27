@@ -10,17 +10,23 @@ async function main() {
   const handlerModule = await import(serverUrl);
   const handler = handlerModule.default;
 
-  const req = new Request("http://localhost/");
+  const req = new Request("http://localhost/your-next-favorite-app/");
   const res = await handler.fetch(req, {});
   let html = await res.text();
 
+  if (res.status >= 400 || !html) {
+    throw new Error(`Failed to render index HTML, status: ${res.status}`);
+  }
+
   // Convert root-relative asset paths to relative paths for GitHub Pages subpath compatibility
+  html = html.replaceAll('href="/your-next-favorite-app/assets/', 'href="./assets/');
+  html = html.replaceAll('src="/your-next-favorite-app/assets/', 'src="./assets/');
+  html = html.replaceAll('content="/your-next-favorite-app/assets/', 'content="./assets/');
+  html = html.replaceAll('href="/your-next-favorite-app/favicon.ico"', 'href="./favicon.ico"');
+  html = html.replaceAll('"/your-next-favorite-app/assets/', '"./assets/');
+  html = html.replaceAll("'/your-next-favorite-app/assets/", "'./assets/");
   html = html.replaceAll('href="/assets/', 'href="./assets/');
   html = html.replaceAll('src="/assets/', 'src="./assets/');
-  html = html.replaceAll('content="/assets/', 'content="./assets/');
-  html = html.replaceAll('href="/favicon.ico"', 'href="./favicon.ico"');
-  html = html.replaceAll('"/assets/', '"./assets/');
-  html = html.replaceAll("'/assets/", "'./assets/");
 
   const outputPublicDir = path.resolve(".output/public");
   if (!fs.existsSync(outputPublicDir)) {

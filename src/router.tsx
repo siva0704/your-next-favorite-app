@@ -3,13 +3,11 @@ import { createRouter } from "@tanstack/react-router";
 import { routeTree } from "./routeTree.gen";
 
 const getBasePath = () => {
-  if (typeof window !== "undefined") {
-    const path = window.location.pathname;
-    if (path.startsWith("/your-next-favorite-app")) {
-      return "/your-next-favorite-app";
-    }
+  const envBase = import.meta.env.BASE_URL;
+  if (envBase && envBase !== "/") {
+    return envBase.endsWith("/") ? envBase.slice(0, -1) : envBase;
   }
-  return import.meta.env.BASE_URL || "/";
+  return "/your-next-favorite-app";
 };
 
 export const getRouter = () => {
