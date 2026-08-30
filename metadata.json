@@ -1,0 +1,6 @@
+{
+  "name": "BYK Bricks",
+  "description": "Premium bricks, construction sand, and aggregates manufacturer and supplier in Haveri, Karnataka.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

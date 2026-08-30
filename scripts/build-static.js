@@ -10,7 +10,7 @@ async function main() {
   const handlerModule = await import(serverUrl);
   const handler = handlerModule.default;
 
-  const req = new Request("http://localhost/your-next-favorite-app/");
+  const req = new Request("http://localhost/");
   const res = await handler.fetch(req, {});
   let html = await res.text();
 
@@ -18,7 +18,7 @@ async function main() {
     throw new Error(`Failed to render index HTML, status: ${res.status}`);
   }
 
-  // Convert root-relative asset paths to relative paths for GitHub Pages subpath compatibility
+  // Ensure relative asset paths compatibility
   html = html.replaceAll('href="/your-next-favorite-app/assets/', 'href="./assets/');
   html = html.replaceAll('src="/your-next-favorite-app/assets/', 'src="./assets/');
   html = html.replaceAll('content="/your-next-favorite-app/assets/', 'content="./assets/');
@@ -37,7 +37,9 @@ async function main() {
   fs.writeFileSync(path.join(outputPublicDir, "404.html"), html, "utf-8");
   fs.writeFileSync(path.join(outputPublicDir, ".nojekyll"), "", "utf-8");
 
-  console.log("Successfully generated static index.html, 404.html, and .nojekyll in .output/public!");
+  console.log(
+    "Successfully generated static index.html, 404.html, and .nojekyll in .output/public!",
+  );
 }
 
 main().catch((err) => {
