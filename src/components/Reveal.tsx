@@ -1,4 +1,4 @@
-import { useEffect, useRef, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 type Direction = "up" | "left" | "right";
 
@@ -20,15 +20,17 @@ export function Reveal({
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
+  const [isRevealed, setIsRevealed] = useState(false);
 
   useEffect(() => {
+    if (isRevealed) return;
     const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            window.setTimeout(() => el.classList.add("is-revealed"), delay);
+            window.setTimeout(() => setIsRevealed(true), delay);
             observer.unobserve(el);
           }
         });
@@ -37,10 +39,13 @@ export function Reveal({
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, [delay]);
+  }, [delay, isRevealed]);
 
   return (
-    <div ref={ref} className={`${classes[direction]} ${className}`}>
+    <div
+      ref={ref}
+      className={`${classes[direction]} ${isRevealed ? "is-revealed" : ""} ${className}`}
+    >
       {children}
     </div>
   );

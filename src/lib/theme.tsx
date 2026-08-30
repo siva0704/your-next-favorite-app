@@ -12,20 +12,32 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>(() => {
-    if (typeof window !== "undefined") {
-      const stored = localStorage.getItem("byk_theme") as Theme | null;
-      if (stored === "light" || stored === "dark") {
-        return stored;
-      }
-      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-        return "dark";
-      }
-    }
-    return "light";
-  });
+  const [theme, setThemeState] = useState<Theme>("light");
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+    const stored = localStorage.getItem("byk_theme") as Theme | null;
+    if (stored === "light" || stored === "dark") {
+      setThemeState(stored);
+      const root = document.documentElement;
+      if (stored === "dark") {
+        root.classList.add("dark");
+        root.classList.remove("light");
+      } else {
+        root.classList.remove("dark");
+        root.classList.add("light");
+      }
+    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      setThemeState("dark");
+      const root = document.documentElement;
+      root.classList.add("dark");
+      root.classList.remove("light");
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
     const root = document.documentElement;
     if (theme === "dark") {
       root.classList.add("dark");
@@ -35,7 +47,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       root.classList.add("light");
     }
     localStorage.setItem("byk_theme", theme);
-  }, [theme]);
+  }, [theme, mounted]);
 
   const setTheme = (newTheme: Theme) => {
     setThemeState(newTheme);

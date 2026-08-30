@@ -6,13 +6,12 @@ import { ProductSpecsModal, type ProductSpecData } from "@/components/ProductSpe
 import { QuoteModal } from "@/components/QuoteModal";
 import { ThemeToggle } from "@/lib/theme";
 import { toast } from "sonner";
-import heroImg from "@/assets/hero-byk.jpg";
-import appajiImg from "@/assets/appaji-byk.jpg";
+import { HERO_IMAGE, APPAJI_IMAGE } from "@/assets/images";
 
 const IMG = {
   logo: "https://lh3.googleusercontent.com/aida-public/AB6AXuD5NN2I4Z_DhxCT5tuRsE6JEwBkH2noKGXjocnrttgKK2ApGuWTwJT2TqZntR4SGHmWeA-EjoPPiO6rtpRCKAIJPJ85PMZPj2FHBI-y_nfKH617kuL_7Htop4Uur922oxx91_gZjXNxfi-9M18t4Yo3S0kUXA7Fhf_m6zu1uPE9PZ6nHRwni7BXnpK4iZO6lM1UYoEqoanGC4sgSvwWSi0ExdxKLt6nxCq9vnIDJBi5ZUGItulidD8l9fiPCe1goC-ew20",
-  hero: heroImg,
-  facility: appajiImg,
+  hero: HERO_IMAGE,
+  facility: APPAJI_IMAGE,
   brick:
     "https://lh3.googleusercontent.com/aida-public/AB6AXuBYNSTqruqH8NmtC9W8ejgY5ngio1fngTkzpbTdTmMeZU_KrfeWcMcGk3puTGOwKGiIj8VlKDEdHZOVKYWM6p8BYZQefrxS5h-GZ0O_WrM7Xe0nun9c5xBscQEZdBhWEfd_tUV9ZUs4je6ABBq1Znonlx0h8-tvQQGq4kEvKAPyNzmZKOmeM5ZJnmvbl_e-yATlRRoO25tdR4RCj5C7wiSCzG6QBm7sN-dGwVvvRgPb8XHwrSPRyftk2Q",
   sand: "https://lh3.googleusercontent.com/aida-public/AB6AXuAyYgnUgnKxlNmdIzsExqVVSU8ZHg-jJbZBfJG2IfGIev6mE5t1kxr-BVog4Rb_jFoebz7YenNXztx2rNChiBV0a55VLosonStkp5H3QVdHZfphpfVs08oSXI9hHn9DymiSvHjhaVg672uvGhFshYjdZ_5b1pothOyL1U_hVCTtvyNG38WPJrNPNFlrKx9XCi2FbD5CbGP8-NHETlyR3oELrVqvuxpcCqwrMj9pqKD5t2Q4RcB_Ndkrvg",
