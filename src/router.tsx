@@ -4,15 +4,19 @@ import { routeTree } from "./routeTree.gen";
 
 const getBasePath = () => {
   if (typeof window !== "undefined") {
-    if (window.location.pathname.startsWith("/your-next-favorite-app")) {
+    const path = window.location.pathname;
+    if (path.startsWith("/your-next-favorite-app")) {
       return "/your-next-favorite-app";
     }
+    if (window.location.hostname.endsWith("github.io")) {
+      const match = path.match(/^\/([^/]+)/);
+      if (match && match[1]) {
+        return `/${match[1]}`;
+      }
+    }
+    return undefined;
   }
-  const envBase = import.meta.env.BASE_URL;
-  if (envBase && envBase !== "/") {
-    return envBase.endsWith("/") ? envBase.slice(0, -1) : envBase;
-  }
-  return "/your-next-favorite-app";
+  return undefined;
 };
 
 export function createRouter() {

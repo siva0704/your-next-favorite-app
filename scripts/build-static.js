@@ -18,15 +18,17 @@ async function main() {
     throw new Error(`Failed to render index HTML, status: ${res.status}`);
   }
 
-  // Ensure relative asset paths compatibility
-  html = html.replaceAll('href="/your-next-favorite-app/assets/', 'href="./assets/');
-  html = html.replaceAll('src="/your-next-favorite-app/assets/', 'src="./assets/');
-  html = html.replaceAll('content="/your-next-favorite-app/assets/', 'content="./assets/');
+  // Ensure relative asset paths compatibility across GitHub Pages subpaths and custom domains
+  html = html.replaceAll("/your-next-favorite-app/assets/", "./assets/");
+  html = html.replaceAll('"/your-next-favorite-app/favicon.ico"', '"./favicon.ico"');
   html = html.replaceAll('href="/your-next-favorite-app/favicon.ico"', 'href="./favicon.ico"');
-  html = html.replaceAll('"/your-next-favorite-app/assets/', '"./assets/');
-  html = html.replaceAll("'/your-next-favorite-app/assets/", "'./assets/");
   html = html.replaceAll('href="/assets/', 'href="./assets/');
   html = html.replaceAll('src="/assets/', 'src="./assets/');
+  html = html.replaceAll('content="/assets/', 'content="./assets/');
+  html = html.replaceAll('"/assets/', '"./assets/');
+  html = html.replaceAll("'/assets/", "'./assets/");
+  html = html.replaceAll('href="/favicon.ico"', 'href="./favicon.ico"');
+  html = html.replaceAll('"/favicon.ico"', '"./favicon.ico"');
 
   const outputPublicDir = path.resolve(".output/public");
   if (!fs.existsSync(outputPublicDir)) {
