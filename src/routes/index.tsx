@@ -444,16 +444,18 @@ function Index() {
           className="relative min-h-[85vh] flex items-center px-4 sm:px-6 lg:px-12 py-12 lg:py-20"
         >
           <div className="mx-auto w-full max-w-container-max">
-            <div className="relative overflow-hidden rounded-3xl sm:rounded-[2.5rem] border border-white/90 shadow-2xl">
+            <div className="relative overflow-hidden rounded-3xl sm:rounded-[2.5rem] border border-white/90 dark:border-white/10 shadow-2xl bg-slate-950">
               {/* Background Hero Image with frosted gradient overlay */}
-              <div className="absolute inset-0 z-0">
+              <div className="absolute inset-0 z-0 overflow-hidden">
                 <img
                   alt="Industrial quality control and clay brick kiln at BYK Bricks"
-                  className="h-full w-full object-cover object-center transform scale-105"
+                  className="h-full w-full object-cover object-center transform scale-105 opacity-90 transition-opacity duration-300"
                   src={IMG.hero}
+                  loading="eager"
+                  decoding="async"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-900/75 to-slate-900/40 backdrop-blur-[2px]" />
-                <div className="absolute inset-0 bg-grid-pattern-dark opacity-30" />
+                <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-900/80 to-slate-900/50 backdrop-blur-[1px]" />
+                <div className="absolute inset-0 bg-grid-pattern-dark opacity-30 pointer-events-none" />
               </div>
 
               {/* Hero Inner Grid */}
@@ -744,20 +746,22 @@ function Index() {
         {/* ========================================================= */}
         <section id="about" className="relative px-4 sm:px-6 lg:px-12 py-20 lg:py-28">
           <div className="mx-auto max-w-container-max">
-            <div className="glass-card rounded-[2.5rem] p-8 sm:p-12 lg:p-16 border border-white/90 shadow-2xl relative overflow-hidden">
+            <div className="glass-card rounded-[2.5rem] p-8 sm:p-12 lg:p-16 border border-white/90 dark:border-white/10 shadow-2xl relative overflow-hidden">
               {/* Decorative Blueprint Background Motif */}
-              <div className="absolute right-0 top-0 w-96 h-96 bg-brand-primary/5 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute right-0 top-0 w-96 h-96 bg-brand-primary/5 dark:bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
 
               <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 {/* Founder Image with Glass Badge */}
                 <div className="lg:col-span-5 relative">
-                  <div className="aspect-[4/5] sm:aspect-square w-full rounded-3xl overflow-hidden border-4 border-white/90 shadow-xl relative group">
+                  <div className="aspect-[4/5] sm:aspect-square w-full rounded-3xl overflow-hidden border-4 border-white/90 dark:border-white/20 shadow-xl relative group bg-slate-900">
                     <img
                       alt="Modern brick manufacturing facility and leadership in Haveri"
                       className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                       src={IMG.facility}
+                      loading="lazy"
+                      decoding="async"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none" />
 
                     <div className="absolute bottom-4 left-4 right-4 glass-dark rounded-2xl p-4 text-white border border-white/20">
                       <div className="text-xs uppercase tracking-wider text-amber-300 font-bold">
