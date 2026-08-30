@@ -6,11 +6,17 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
+const repoBase =
+  process.env.BASE_PATH ||
+  (process.env.GITHUB_REPOSITORY
+    ? `/${process.env.GITHUB_REPOSITORY.split("/")[1]}`
+    : process.env.NODE_ENV === "production"
+      ? "/your-next-favorite-app"
+      : undefined);
+
 export default defineConfig({
-  vite: {
-    base: "/",
-  },
   tanstackStart: {
+    ...(repoBase ? { router: { basepath: repoBase } } : {}),
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },

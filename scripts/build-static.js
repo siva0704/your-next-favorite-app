@@ -10,8 +10,21 @@ async function main() {
   const handlerModule = await import(serverUrl);
   const handler = handlerModule.default;
 
-  const req = new Request("http://localhost/");
-  const res = await handler.fetch(req, {});
+  const repoBase =
+    process.env.BASE_PATH ||
+    (process.env.GITHUB_REPOSITORY
+      ? `/${process.env.GITHUB_REPOSITORY.split("/")[1]}`
+      : "/your-next-favorite-app");
+
+  let res;
+  if (repoBase && repoBase !== "/") {
+    const reqWithBase = new Request(`http://localhost${repoBase}/`);
+    res = await handler.fetch(reqWithBase, {});
+  }
+  if (!res || res.status >= 400) {
+    const reqRoot = new Request("http://localhost/");
+    res = await handler.fetch(reqRoot, {});
+  }
   let html = await res.text();
 
   if (res.status >= 400 || !html) {
@@ -19,6 +32,11 @@ async function main() {
   }
 
   // Ensure relative asset paths compatibility across GitHub Pages subpaths and custom domains
+  if (repoBase) {
+    html = html.replaceAll(`${repoBase}/assets/`, "./assets/");
+    html = html.replaceAll(`"${repoBase}/favicon.ico"`, '"./favicon.ico"');
+    html = html.replaceAll(`href="${repoBase}/favicon.ico"`, 'href="./favicon.ico"');
+  }
   html = html.replaceAll("/your-next-favorite-app/assets/", "./assets/");
   html = html.replaceAll('"/your-next-favorite-app/favicon.ico"', '"./favicon.ico"');
   html = html.replaceAll('href="/your-next-favorite-app/favicon.ico"', 'href="./favicon.ico"');

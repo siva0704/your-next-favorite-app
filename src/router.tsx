@@ -3,6 +3,9 @@ import { createRouter as createRouterInstance } from "@tanstack/react-router";
 import { routeTree } from "./routeTree.gen";
 
 const getBasePath = () => {
+  if (typeof process !== "undefined" && process.env.TSS_ROUTER_BASEPATH) {
+    return process.env.TSS_ROUTER_BASEPATH;
+  }
   if (typeof window !== "undefined") {
     const path = window.location.pathname;
     if (path.startsWith("/your-next-favorite-app")) {
@@ -14,7 +17,6 @@ const getBasePath = () => {
         return `/${match[1]}`;
       }
     }
-    return undefined;
   }
   return undefined;
 };
